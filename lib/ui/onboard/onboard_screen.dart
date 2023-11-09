@@ -23,9 +23,9 @@ class OnboardScreen extends StatefulWidget {
 class _OnboardScreenState extends State<OnboardScreen> {
   List<PageViewModel> pageList = [
     PageViewModel(
-      title: "Trusted by Million",
+      title: "Welcome to RB Wallet",
       body:
-          "Here you can write the description of the page, to explain someting...",
+          "Step into the world of RB Wallet, your secure gateway to digital transactions.",
       image: Center(
         child: SvgPicture.asset(
           "assets/vector/phone.svg",
@@ -34,9 +34,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
       ),
     ),
     PageViewModel(
-      title: "Safe, Reliable and Superfast",
+      title: "Safe & Simple Transactions",
       body:
-          "Here you can write the description of the page, to explain someting...",
+          "RB Wallet makes buying, sending, and receiving crypto a breeze.",
       image: Center(
         child: SvgPicture.asset(
           "assets/vector/eth.svg",
@@ -45,9 +45,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
       ),
     ),
     PageViewModel(
-      title: "Your key to explore Web3",
+      title: "Your Key to Explore Web3",
       body:
-          "Here you can write the description of the page, to explain someting...",
+          "Discover a universe of decentralized possibilities in the exciting world of Web3.",
       image: Center(
         child: SvgPicture.asset(
           "assets/vector/world.svg",

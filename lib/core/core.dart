@@ -70,7 +70,7 @@ class Core {
         apiKey: "WYNKGK6U4W48FI6X4XFDIZUW6ZBQJS2GVC",
         wrappedTokenAddress: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
         isMainnet: true,
-        priceId: "bnb-smart-chain",
+        priceId: "binancecoin",
         addressViewUrl: "https://bscscan.com/address",
         transactionViewUrl: "https://bscscan.com/tx/",
         dotColor: const Color(0xff8247e5),

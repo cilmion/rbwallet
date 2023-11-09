@@ -168,7 +168,7 @@ class _CreatePasswordCmpState extends State<CreatePasswordCmp> {
                         Navigator.of(context).pushNamed(WebViewScreen.router,
                             arguments: {
                               "title": "Learn more",
-                              "url": "https://ngydp.io/"
+                              "url": "https://re-born.company/"
                             });
                       },
                       child: RichText(
@@ -204,7 +204,7 @@ class _CreatePasswordCmpState extends State<CreatePasswordCmp> {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         backgroundColor: Colors.red,
                           content: Text(
-                              "You must to accept the terms and condition to use Cryptomask")));
+                              "You must accept the terms and conditions to use RB Wallet")));
                       return;
                     }
                     ScaffoldMessenger.of(context).removeCurrentSnackBar();

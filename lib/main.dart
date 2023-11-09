@@ -47,10 +47,16 @@ import 'constant.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
-    Hive..init("")..registerAdapter(TokenAdapter())..registerAdapter(CollectibleAdapter());
+    Hive
+      ..init("")
+      ..registerAdapter(TokenAdapter())
+      ..registerAdapter(CollectibleAdapter());
   } else {
     final appDocumentDirectory = await getApplicationDocumentsDirectory();
-    Hive..init(appDocumentDirectory.path)..registerAdapter(TokenAdapter())..registerAdapter(CollectibleAdapter());
+    Hive
+      ..init(appDocumentDirectory.path)
+      ..registerAdapter(TokenAdapter())
+      ..registerAdapter(CollectibleAdapter());
   }
   FlutterSecureStorage fss = const FlutterSecureStorage();
   String? wallet = await fss.read(key: "wallet");
@@ -78,7 +84,11 @@ class MyApp extends StatefulWidget {
   final String locale;
   final Box userPreferenceBox;
 
-  const MyApp({Key? key, required this.initialWidget, required this.locale, required this.userPreferenceBox})
+  const MyApp(
+      {Key? key,
+      required this.initialWidget,
+      required this.locale,
+      required this.userPreferenceBox})
       : super(key: key);
 
   @override
@@ -106,18 +116,23 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => WalletCubit(),
         ),
-        BlocProvider(create: (context) => PreferenceCubit(userPreference: widget.userPreferenceBox)),
+        BlocProvider(
+            create: (context) =>
+                PreferenceCubit(userPreference: widget.userPreferenceBox)),
         BlocProvider(create: (context) => LocaleCubit(locale: locale)),
-        BlocProvider(create: (context) => TokenCubit(userPreferenceBox: widget.userPreferenceBox)),
-        BlocProvider(create: (context) => CollectibleCubit(userPreferenceBox: widget.userPreferenceBox))
-
+        BlocProvider(
+            create: (context) =>
+                TokenCubit(userPreferenceBox: widget.userPreferenceBox)),
+        BlocProvider(
+            create: (context) =>
+                CollectibleCubit(userPreferenceBox: widget.userPreferenceBox))
       ],
       child: BlocConsumer<LocaleCubit, LocaleState>(
         listener: (context, state) {},
         builder: (context, state) {
           return GetMaterialApp(
             locale: Locale.fromSubtags(
-                languageCode:(state as LocaleInitial).locale),
+                languageCode: (state as LocaleInitial).locale),
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -153,7 +168,8 @@ class _MyAppState extends State<MyApp> {
                 String title = (setting.arguments as dynamic)["title"];
                 String url = (setting.arguments as dynamic)["url"];
                 return MaterialPageRoute(
-                    builder: (context) =>  WebViewScreen(title: title, url: url));
+                    builder: (context) =>
+                        WebViewScreen(title: title, url: url));
               }
               if (setting.name == TransactionHistoryScreen.route) {
                 return MaterialPageRoute(
@@ -192,7 +208,8 @@ class _MyAppState extends State<MyApp> {
                 String from = (setting.arguments as dynamic)["from"];
                 double value = (setting.arguments as dynamic)["value"];
                 String? token = (setting.arguments as dynamic)["token"];
-                String? contractAddress = (setting.arguments as dynamic)["contractAddress"];
+                String? contractAddress =
+                    (setting.arguments as dynamic)["contractAddress"];
 
                 Collectible? collectible =
                     (setting.arguments as dynamic)["collectible"];
@@ -236,7 +253,6 @@ class _MyAppState extends State<MyApp> {
                           balance: token != null ? balance : "0",
                           token: token,
                           collectible: collectible,
-                        
                         ));
               }
               if (setting.name == SwapConfirmScreen.route) {
@@ -262,7 +278,8 @@ class _MyAppState extends State<MyApp> {
                 String token = (setting.arguments as dynamic)["token"];
                 bool? isCollectible =
                     (setting.arguments as dynamic)["isCollectible"];
-                String tokenId = (setting.arguments as dynamic)["tokenId"]  ?? "-1";
+                String tokenId =
+                    (setting.arguments as dynamic)["tokenId"] ?? "-1";
 
                 return MaterialPageRoute(
                     builder: (context) => TokenDashboardScreen(
@@ -282,7 +299,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 );
               }
-              
+
               return null;
             },
           );
@@ -290,6 +307,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-
-  
 }
